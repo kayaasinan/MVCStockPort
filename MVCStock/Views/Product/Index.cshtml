@@ -1,0 +1,38 @@
+﻿@using MVCStock.Models.Entity
+@model List<TblProduct>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ÜRÜN ID</th>
+        <th>ÜRÜN ADI</th>
+        <th>MARKASI</th>
+        <th>KATEGORİ</th>
+        <th>FİYAT</th>
+        <th>STOK</th>
+        <th> SİL </th>
+        <th> GÜNCELLE </th>
+    </tr>
+    <tbody>
+
+        @foreach (var prdt in Model)
+        {
+            <tr>
+                <th>@prdt.ProductId</th>
+                <td>@prdt.ProductName</td>
+                <td>@prdt.ProductBrand</td>
+                <td>@prdt.TblCategory.CategoryName</td>
+                <td>@prdt.ProductPrice</td>
+                <td>@prdt.ProductStock</td>
+                <td><a href="/Product/Delete/@prdt.ProductId" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Product/Update/@prdt.ProductId" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a href="/Product/NewProduct" class="btn btn-primary">YENİ ÜRÜN EKLE</a>
+
