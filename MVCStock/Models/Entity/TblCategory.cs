@@ -23,7 +23,7 @@ namespace MVCStock.Models.Entity
 
         public short CategoryId { get; set; }
         [Required(ErrorMessage = "Bu alan boþ býrakýlamaz!")]
-        [StringLength(50, ErrorMessage = "Lüfen 50 karakter uzunluðunda veri giriniz!")]
+        [StringLength(50, ErrorMessage = "Lütfen en fazla 50 karakter uzunluðunda veri giriniz!")]
         public string CategoryName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

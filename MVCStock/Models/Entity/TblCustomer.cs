@@ -23,10 +23,10 @@ namespace MVCStock.Models.Entity
 
         public int CustomerId { get; set; }
         [Required(ErrorMessage = "Bu alan boþ býrakýlamaz!")]
-        [StringLength(50,ErrorMessage ="Lüfen 50 karakter uzunluðunda veri giriniz")]
+        [StringLength(50,ErrorMessage ="Lütfen en fazla 50 karakter uzunluðunda veri giriniz")]
         public string CustomerName { get; set; }
         [Required(ErrorMessage = "Bu alan boþ býrakýlamaz")]
-        [StringLength(50, ErrorMessage = "Lüfen en fazla 50 karakter uzunluðunda veri giriniz!")]
+        [StringLength(50, ErrorMessage = "Lütfen en fazla 50 karakter uzunluðunda veri giriniz!")]
         public string CustomerSurname { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
