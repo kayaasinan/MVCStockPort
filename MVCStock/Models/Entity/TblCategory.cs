@@ -11,7 +11,8 @@ namespace MVCStock.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +20,12 @@ namespace MVCStock.Models.Entity
         {
             this.TblProduct = new HashSet<TblProduct>();
         }
-    
+
         public short CategoryId { get; set; }
+        [Required(ErrorMessage = "Bu alan boþ býrakýlamaz!")]
+        [StringLength(50, ErrorMessage = "Lüfen 50 karakter uzunluðunda veri giriniz!")]
         public string CategoryName { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblProduct> TblProduct { get; set; }
     }

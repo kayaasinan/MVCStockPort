@@ -1,4 +1,4 @@
-﻿
+﻿@model MVCStock.Models.Entity.TblCategory
 @{
     ViewBag.Title = "NewCategory";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -7,7 +7,8 @@
 <form class="form-label" method="post">
     <div>
         <label>Kategori Adı</label>
-        <input type="text" class="form-control" name="CategoryName" />
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(X => X.CategoryName,"", new { @style = "color:red" })
     </div>
     <div style="margin-top:15px">
         <button class="btn btn-info">Kategori Ekle</button>

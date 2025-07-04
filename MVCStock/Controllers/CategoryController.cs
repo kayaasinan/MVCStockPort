@@ -24,6 +24,10 @@ namespace MVCStock.Controllers
         [HttpPost]
         public ActionResult NewCategory(TblCategory p1)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("NewCategory");
+            }
             db.TblCategory.Add(p1);
             db.SaveChanges();
             return View();
@@ -35,6 +39,17 @@ namespace MVCStock.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult GetCategoryById(int id)
+        {
+            var ktgr=db.TblCategory.Find(id);
+            return View("GetCategoryById",ktgr);
+        }
+        public ActionResult Update(TblCategory p1)
+        {
+            var ktg=db.TblCategory.Find(p1.CategoryId);
+            ktg.CategoryName = p1.CategoryName;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

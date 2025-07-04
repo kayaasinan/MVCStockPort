@@ -1,4 +1,4 @@
-﻿
+﻿@model MVCStock.Models.Entity.TblCustomer
 @{
     ViewBag.Title = "NewCustomer";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -7,11 +7,13 @@
 <form class="form-label" method="post">
     <div>
         <label>Müşteri Adı</label>
-        <input type="text" class="form-control" name="CustomerName" />
+        @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(X => X.CustomerName, "", new { @style = "color:red" })
     </div>
     <div>
         <label>Müşteri Soyadı</label>
-        <input type="text" class="form-control" name="CustomerSurname" />
+        @Html.TextBoxFor(x => x.CustomerSurname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(X => X.CustomerSurname, "", new { @style = "color:red" })
     </div>
     <div style="margin-top:15px">
         <button class="btn btn-info">Müşteri Ekle</button>
