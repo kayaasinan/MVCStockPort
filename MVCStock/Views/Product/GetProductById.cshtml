@@ -1,0 +1,35 @@
+﻿@model MVCStock.Models.Entity.TblProduct
+@{
+    ViewBag.Title = "GetProductById";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Product", FormMethod.Post))
+{
+    <div class="form-label">
+        @Html.LabelFor(x => x.ProductId)
+        @Html.TextBoxFor(x => x.ProductId, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.ProductName)
+        @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.ProductBrand)
+        @Html.TextBoxFor(x => x.ProductBrand, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.ProductCategory)
+        @Html.DropDownListFor(x=>x.TblCategory.CategoryId,(List<SelectListItem>)ViewBag.vls, new { @class = "form-control" })
+       @* @Html.TextBoxFor(x => x.ProductCategory, new { @class = "form-control" })*@
+        <br />
+        @Html.LabelFor(x => x.ProductPrice)
+        @Html.TextBoxFor(x => x.ProductPrice, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.ProductStock)
+        @Html.TextBoxFor(x => x.ProductStock, new { @class = "form-control" })
+
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-warning">Ürün Güncelle</button>
+    </div>
+}
+
