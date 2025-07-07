@@ -24,13 +24,13 @@ MVCStockPort, stok yönetimi ve ürün satışı süreçlerini kolaylaştırmak 
 
 ## 🖼️ Portal İçinden
 
-![Kategoriler](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-07%20183047.png?raw=true)
+![Kategoriler](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/kategoriler.png?raw=true)
 
-![Ürünler](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-07%20183107.png?raw=true)
+![Ürünler](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/urunler.png?raw=true)
 
-![Müşteriler](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-07%20183122.png?raw=true)
+![Müşteriler](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/musteriler.png?raw=true)
 
-![Satışlar](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-07%20183141.png?raw=true)
+![Satışlar](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/satislar.png?raw=true)
 
-![Hakkımda](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-07-07%20183202.png?raw=true)
+![Hakkımda](https://github.com/kayaasinan/MVCStockPort/blob/master/MVCStock/Images/hakkimda.png?raw=true)
 
