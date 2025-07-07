@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVCStock.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVCStock.Controllers
 {
@@ -11,9 +13,10 @@ namespace MVCStock.Controllers
     {
         // GET: Category
         MvcDbStockEntities db = new MvcDbStockEntities();
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
-            var values = db.TblCategory.ToList();
+            //var values = db.TblCategory.ToList();
+            var values = db.TblCategory.ToList().ToPagedList(page,4);
             return View(values);
         }
         [HttpGet]

@@ -1,9 +1,12 @@
-﻿using System;
+﻿using MVCStock.Models.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.Mvc;
-using MVCStock.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVCStock.Controllers
 {
@@ -11,9 +14,9 @@ namespace MVCStock.Controllers
     {
         // GET: Product
         MvcDbStockEntities db=new MvcDbStockEntities();
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
-            var values=db.TblProduct.ToList();
+            var values = db.TblProduct.ToList().ToPagedList(page, 10);
             return View(values);
         }
         [HttpGet]

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#aboutModal">
+    Hakkımda
+</button>
+
+
+<div id="aboutModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">ℹ️ Proje Hakkında</h4>
+            </div>
+            <div class="modal-body">
+                <div style="font-size: 2rem;">💼 MVCStock</div>
+                <p>Bu proje <strong>Sinan Kaya</strong> tarafından <strong>2025</strong> yılında geliştirilmiştir.</p>
+                <p>🛠️ Teknolojiler 🛠️ </p>
+                <ul class="list-unstyled" style="font-size: 14px; line-height: 1.6;">
+                    <li>• ASP.NET MVC 5</li>
+                    <li>• Entity Framework (Database First)</li>
+                    <li>• Microsoft SQL Server</li>
+                    <li>• HTML5, CSS3, Bootstrap 3</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

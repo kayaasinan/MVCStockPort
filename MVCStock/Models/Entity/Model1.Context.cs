@@ -28,7 +28,7 @@ namespace MVCStock.Models.Entity
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TblCategory> TblCategory { get; set; }
         public virtual DbSet<TblCustomer> TblCustomer { get; set; }
-        public virtual DbSet<TblProcess> TblProcess { get; set; }
         public virtual DbSet<TblProduct> TblProduct { get; set; }
+        public virtual DbSet<TblProcess> TblProcess { get; set; }
     }
 }

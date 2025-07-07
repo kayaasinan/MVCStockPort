@@ -5,26 +5,42 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>MÜŞTERİ ID</th>
-        <th>MÜŞTERİ ADI</th>
-        <th>MÜŞTERİ SOYADI</th>
-        <th> SİL </th>
-        <th> GÜNCELLE </th>
-    </tr>
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>MÜŞTERİ ID</th>
+            <th>MÜŞTERİ ADI</th>
+            <th>MÜŞTERİ SOYADI</th>
+            <th> SİL </th>
+            <th> GÜNCELLE </th>
+        </tr>
+    </thead>
     <tbody>
-        @foreach(var cstmr in Model)
-            {
-                <tr>
-                    <th>@cstmr.CustomerId</th>
-                    <td>@cstmr.CustomerName</td>
-                    <td>@cstmr.CustomerSurname</td>
-                    <td><a href="/Customer/Delete/@cstmr.CustomerId" class="btn btn-danger">SİL</a></td>
-                    <td><a href="/Customer/GetCustomerById/@cstmr.CustomerId" class="btn btn-success">GÜNCELLE</a></td>
-                </tr>
-            }
+        @foreach (var cstmr in Model)
+        {
+            <tr>
+                <th>@cstmr.CustomerId</th>
+                <td>@cstmr.CustomerName</td>
+                <td>@cstmr.CustomerSurname</td>
+                <td>
+                    <a href="/Customer/Delete/@cstmr.CustomerId" class="btn btn-danger" onclick="return confirm('Bu müşteriyi silmek istediğinize emin misiniz?');"> SİL </a>
+                </td>
+                <td><a href="/Customer/GetCustomerById/@cstmr.CustomerId" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
     </tbody>
 </table>
-<a href="/Customer/NewCustomer" class="btn btn-primary">YENİ MÜŞTERİ EKLE</a>
 
+    <a href="/Customer/NewCustomer" class="btn btn-primary">YENİ MÜŞTERİ EKLE</a>
+
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+        <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script>
+ 
+    $('#tbl1').DataTable({
+        "dom": '<"row mb-2"<"col-sm-6 d-flex align-items-center"l><"col-sm-6"f>>rt<"row mt-2"<"col-sm-6"i><"col-sm-6"p>>'
+    });
+
+</script>

@@ -15,8 +15,8 @@ namespace MVCStock.Models.Entity
     public partial class TblProcess
     {
         public int SalesId { get; set; }
-        public Nullable<int> Product { get; set; }
-        public Nullable<int> Customer { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
         public Nullable<byte> Quantity { get; set; }
         public Nullable<decimal> Price { get; set; }
     

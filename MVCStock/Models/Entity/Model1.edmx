@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MvcDbStockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MvcDbStockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -35,8 +35,8 @@
             <PropertyRef Name="SalesId" />
           </Key>
           <Property Name="SalesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product" Type="int" />
-          <Property Name="Customer" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
           <Property Name="Quantity" Type="tinyint" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
@@ -59,7 +59,7 @@
               <PropertyRef Name="CustomerId" />
             </Principal>
             <Dependent Role="TblProcess">
-              <PropertyRef Name="Customer" />
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -71,7 +71,7 @@
               <PropertyRef Name="ProductId" />
             </Principal>
             <Dependent Role="TblProcess">
-              <PropertyRef Name="Product" />
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -106,8 +106,7 @@
             <End Role="TblProduct" EntitySet="TblProduct" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MvcDbStockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -136,20 +135,8 @@
           <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustomerSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TblProcess" Relationship="Self.FK_TblProcess_TblCustomer" FromRole="TblCustomer" ToRole="TblProcess" />
-        </EntityType>
-        <EntityType Name="TblProcess">
-          <Key>
-            <PropertyRef Name="SalesId" />
-          </Key>
-          <Property Name="SalesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product" Type="Int32" />
-          <Property Name="Customer" Type="Int32" />
-          <Property Name="Quantity" Type="Byte" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="TblCustomer" Relationship="Self.FK_TblProcess_TblCustomer" FromRole="TblProcess" ToRole="TblCustomer" />
-          <NavigationProperty Name="TblProduct" Relationship="Self.FK_TblProcess_TblProduct" FromRole="TblProcess" ToRole="TblProduct" />
-        </EntityType>
+          <NavigationProperty Name="TblProcess" Relationship="MvcDbStockModel.FK_TblProcess_TblCustomer" FromRole="TblCustomer" ToRole="TblProcess" />
+          </EntityType>
         <EntityType Name="TblProduct">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -161,7 +148,7 @@
           <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ProductStock" Type="Byte" />
           <NavigationProperty Name="TblCategory" Relationship="Self.FK_TblProduct_TblCategory" FromRole="TblProduct" ToRole="TblCategory" />
-          <NavigationProperty Name="TblProcess" Relationship="Self.FK_TblProcess_TblProduct" FromRole="TblProduct" ToRole="TblProcess" />
+          <NavigationProperty Name="TblProcess" Relationship="MvcDbStockModel.FK_TblProcess_TblProduct" FromRole="TblProduct" ToRole="TblProcess" />
         </EntityType>
         <Association Name="FK_TblProduct_TblCategory">
           <End Role="TblCategory" Type="Self.TblCategory" Multiplicity="0..1" />
@@ -175,49 +162,61 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblProcess_TblCustomer">
-          <End Role="TblCustomer" Type="Self.TblCustomer" Multiplicity="0..1" />
-          <End Role="TblProcess" Type="Self.TblProcess" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblCustomer">
-              <PropertyRef Name="CustomerId" />
-            </Principal>
-            <Dependent Role="TblProcess">
-              <PropertyRef Name="Customer" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblProcess_TblProduct">
-          <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="0..1" />
-          <End Role="TblProcess" Type="Self.TblProcess" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblProduct">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="TblProcess">
-              <PropertyRef Name="Product" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="MvcDbStockEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TblCategory" EntityType="Self.TblCategory" />
           <EntitySet Name="TblCustomer" EntityType="Self.TblCustomer" />
-          <EntitySet Name="TblProcess" EntityType="Self.TblProcess" />
           <EntitySet Name="TblProduct" EntityType="Self.TblProduct" />
           <AssociationSet Name="FK_TblProduct_TblCategory" Association="Self.FK_TblProduct_TblCategory">
             <End Role="TblCategory" EntitySet="TblCategory" />
             <End Role="TblProduct" EntitySet="TblProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblProcess_TblCustomer" Association="Self.FK_TblProcess_TblCustomer">
+          <EntitySet Name="TblProcess" EntityType="MvcDbStockModel.TblProcess" />
+          <AssociationSet Name="FK_TblProcess_TblCustomer" Association="MvcDbStockModel.FK_TblProcess_TblCustomer">
             <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblProcess" EntitySet="TblProcess" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblProcess_TblProduct" Association="Self.FK_TblProcess_TblProduct">
+          <AssociationSet Name="FK_TblProcess_TblProduct" Association="MvcDbStockModel.FK_TblProcess_TblProduct">
             <End Role="TblProduct" EntitySet="TblProduct" />
             <End Role="TblProcess" EntitySet="TblProcess" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="TblProcess">
+          <Key>
+            <PropertyRef Name="SalesId" />
+          </Key>
+          <Property Name="SalesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Quantity" Type="Byte" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="TblCustomer" Relationship="MvcDbStockModel.FK_TblProcess_TblCustomer" FromRole="TblProcess" ToRole="TblCustomer" />
+          <NavigationProperty Name="TblProduct" Relationship="MvcDbStockModel.FK_TblProcess_TblProduct" FromRole="TblProcess" ToRole="TblProduct" />
+        </EntityType>
+        <Association Name="FK_TblProcess_TblCustomer">
+          <End Type="MvcDbStockModel.TblCustomer" Role="TblCustomer" Multiplicity="0..1" />
+          <End Type="MvcDbStockModel.TblProcess" Role="TblProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="TblProcess">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProcess_TblProduct">
+          <End Type="MvcDbStockModel.TblProduct" Role="TblProduct" Multiplicity="0..1" />
+          <End Type="MvcDbStockModel.TblProcess" Role="TblProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="TblProcess">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -252,17 +251,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblProcess">
-            <EntityTypeMapping TypeName="MvcDbStockModel.TblProcess">
-              <MappingFragment StoreEntitySet="TblProcess">
-                <ScalarProperty Name="SalesId" ColumnName="SalesId" />
-                <ScalarProperty Name="Product" ColumnName="Product" />
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TblProduct">
             <EntityTypeMapping TypeName="MvcDbStockModel.TblProduct">
               <MappingFragment StoreEntitySet="TblProduct">
@@ -272,6 +260,17 @@
                 <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
                 <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
                 <ScalarProperty Name="ProductStock" ColumnName="ProductStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProcess">
+            <EntityTypeMapping TypeName="MvcDbStockModel.TblProcess">
+              <MappingFragment StoreEntitySet="TblProcess">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SalesId" ColumnName="SalesId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

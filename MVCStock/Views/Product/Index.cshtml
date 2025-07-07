@@ -1,5 +1,7 @@
 ﻿@using MVCStock.Models.Entity
-@model List<TblProduct>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TblProduct>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -27,12 +29,13 @@
                 <td>@prdt.TblCategory.CategoryName</td>
                 <td>@prdt.ProductPrice</td>
                 <td>@prdt.ProductStock</td>
-                <td><a href="/Product/Delete/@prdt.ProductId" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Product/Delete/@prdt.ProductId" class="btn btn-danger" onclick="return confirm('Bu ürünü silmek istediğinize emin misiniz?');"> SİL </a>
                 <td><a href="/Product/GetProductById/@prdt.ProductId" class="btn btn-success">GÜNCELLE</a></td>
             </tr>
         }
 
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 <a href="/Product/NewProduct" class="btn btn-primary">YENİ ÜRÜN EKLE</a>
 

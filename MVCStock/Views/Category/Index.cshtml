@@ -1,5 +1,7 @@
 ﻿@using MVCStock.Models.Entity;
-@model List<TblCategory>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.PagedList<TblCategory>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -13,18 +15,18 @@
         <th> GÜNCELLE </th>
     </tr>
     <tbody>
-        @foreach(var ctgr in Model)
-            {
-                <tr>
-                    <th>@ctgr.CategoryId </th>
-                    <td>@ctgr.CategoryName </td>
-                    <td><a href="/Category/Delete/@ctgr.CategoryId" class="btn btn-danger">SİL</a></td>
-                    <td><a href="/Category/GetCategoryById/@ctgr.CategoryId"class="btn btn-success">GÜNCELLE</a></td>
+        @foreach (var ctgr in Model)
+        {
+            <tr>
+                <th>@ctgr.CategoryId </th>
+                <td>@ctgr.CategoryName </td>
+                <td><a href="/Category/Delete/@ctgr.CategoryId" class="btn btn-danger" onclick="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?');"> SİL </a>
+                <td><a href="/Category/GetCategoryById/@ctgr.CategoryId" class="btn btn-success">GÜNCELLE</a></td>
 
-                   
-                </tr>
-            }
+            </tr>
+        }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 <a href="/Category/NewCategory" class="btn btn-primary">YENİ KATEGORİ EKLE</a>
 

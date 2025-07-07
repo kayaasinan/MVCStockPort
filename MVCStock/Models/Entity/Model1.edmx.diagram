@@ -8,11 +8,11 @@
         <EntityTypeShape EntityType="MvcDbStockModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcDbStockModel.TblCategory" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcDbStockModel.TblCustomer" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcDbStockModel.TblProcess" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcDbStockModel.TblProduct" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="MvcDbStockModel.FK_TblProduct_TblCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcDbStockModel.FK_TblProcess_TblCustomer" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcDbStockModel.FK_TblProcess_TblProduct" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MvcDbStockModel.TblProcess" Width="1.5" PointX="5.25" PointY="0.875" />
+        <AssociationConnector Association="MvcDbStockModel.FK_TblProcess_TblCustomer" />
+        <AssociationConnector Association="MvcDbStockModel.FK_TblProcess_TblProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
