@@ -16,7 +16,7 @@ namespace MVCStock.Controllers
         public ActionResult Index(int page=1)
         {
             //var values = db.TblCategory.ToList();
-            var values = db.TblCategory.ToList().ToPagedList(page,4);
+            var values = db.TblCategory.ToList().ToPagedList(page,8);
             return View(values);
         }
         [HttpGet]

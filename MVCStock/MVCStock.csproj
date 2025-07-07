@@ -354,6 +354,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Ekran görüntüsü 2025-07-07 183047.png" />
+    <Content Include="Images\Ekran görüntüsü 2025-07-07 183107.png" />
+    <Content Include="Images\Ekran görüntüsü 2025-07-07 183122.png" />
+    <Content Include="Images\Ekran görüntüsü 2025-07-07 183141.png" />
+    <Content Include="Images\Ekran görüntüsü 2025-07-07 183202.png" />
     <Content Include="Models\Entity\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
